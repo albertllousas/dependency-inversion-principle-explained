@@ -32,7 +32,7 @@ The base of all of them is the same and simple, just invert the dependencies to 
 
 ## Explanation
 
-The principle says:[^fn]
+The principle says:[^fn1]
 > _A. High-level modules should not depend on low-level modules. Both should depend on abstractions._
 > 
 > _B. Abstractions should not depend on details. Details should depend on abstractions._
@@ -56,13 +56,13 @@ I just divided the different layers in different packages, but the separation ca
 
 We can even add some code:
 
-_This is just sample code, in order to explain the proble, is not production code_
+_This is just sample code, in order to explain the problem, is not production code_
 
 ```java
 package my.awesome.project.services
 
 public class TicketsService {
-import ...
+
   private TicketsRepository TicketsRepository;
 
   public TicketsService(TicketsRepository ticketsRepository) {
@@ -76,7 +76,7 @@ import ...
 ```
 ```java
 package my.awesome.project.repositories
-import ...
+
 public interface TicketsRepository {
   List<Ticket> findAll();
 }
@@ -85,7 +85,7 @@ We can create the most simplest database in memory:
 
 ```java
 package my.awesome.project.repositories
-import ...
+
 public class TicketsRepositoryImpl implements TicketsRepository{
   
   public List<Ticket> list;
@@ -104,7 +104,7 @@ Just notice that the interface and the implementation are tied together in the s
  
 Easy right?
 
-Now you think you are applying the fifth solid pattern but the reallity is that you are doing totally the **opposite** thing, you are violating DIP.
+Now you think you are applying the fifth solid pattern but the reallity is that you are doing totally the **opposite** thing. <span style="color:#EA735A;">You are violating the principle!!</span>
 
 So, read again the first phrase of the principle:
 
@@ -128,10 +128,10 @@ Change some naming, providing them with a meaningful names ( that topic could co
 
 And some sample code to how it could looks like:
 
+_Again: This is just sample code, in order to explain the problem, is not production code_
+
 ```java
 package my.awesome.project.usecases
-
-import ...
 
 public class GetTicketsUseCase {
 
@@ -149,8 +149,6 @@ public class GetTicketsUseCase {
 ```java
 package my.awesome.project.usecases
 
-import ...
-
 public interface FindTickets {
   List<Ticket> findAll();
 }
@@ -159,8 +157,6 @@ public interface FindTickets {
 
 ```java
 package my.awesome.project.repositories
-
-import ...
 
 public class InMemoryTicketsRepository implements FindTickets, AddTickets{
 
@@ -216,11 +212,10 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 - Overcomplicating/overengineering: People tend to create complicated architectures on top of that, but the pattern is really simple and powerful.
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling has no sense.
 
-
 ## Creating a simple architecture
 
 Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest.
 
 
-[^fn]: [The Dependency Inversion Principle, Robert C. Martin, C++ Report, May 1996](https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf)
+[^fn1]: [The Dependency Inversion Principle, Robert C. Martin, C++ Report, May 1996](https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf)
 [^fn2]: [A little architecture, Robert C. Martin, January 2016](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html)
