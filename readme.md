@@ -45,7 +45,7 @@ I will use java as a language to go through this problem, as it is one of the mo
 
 In the traditional layered architecture we would think in something like:
 <p align="center">
-  <img src="img/tickets_0.svg">
+  <img src="img/tickets_0.png">
 </p>
 Now, we could follow the principle and add the abstraction:
 <p align="center">
@@ -217,7 +217,7 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling has no sense.
 
 
-##Creating a simple architecture
+## Creating a simple architecture
 
 Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest.
 
