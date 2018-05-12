@@ -45,7 +45,7 @@ I will use java as a language to go through this problem, as it is one of the mo
 
 In the traditional layered architecture we would think in something like:
 <p align="center">
-  <img src="img/tickets_0.png">
+  <img src="img/tickets_0.svg">
 </p>
 Now, we could follow the principle and add the abstraction:
 <p align="center">
@@ -219,7 +219,8 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 
 ##Creating a simple architecture
 
-Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest
+Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest.
+
 
 [^fn]: [The Dependency Inversion Principle, Robert C. Martin, C++ Report, May 1996](https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf)
 [^fn2]: [A little architecture, Robert C. Martin, January 2016](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html)
