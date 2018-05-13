@@ -1,8 +1,8 @@
 # Dependency inversion principle in practice
 
 1. [Introduction](##Introduction)
-2. [Explaining DIP](##Explaining%20DIP)
-3. [Creating a simple architecture](##Creating%20a%20simple%20architecture)
+2. [What is dip?](##what-is-dip)
+3. [Creating a simple architecture](##creating-a-simple-architecture)
 
 ## Introduction
 
@@ -18,7 +18,7 @@ Dependency inversion principle (from now on DIP) is the last principle and possi
 
 The goal of this project is to explain, apply and put in practice this pattern to show how to create and design a **simple architecture**.
 
-### DIP Based architectures
+### What is dip
 
 Some software architectural patterns are based on this pattern:
 
@@ -44,13 +44,17 @@ Let's imagine we want to create a simplistic design for a service that provides 
 I will use java as a language to go through this problem, as it is one of the most well known languages nowadays, but could be applied to almost any programming language.
 
 In the traditional layered architecture we would think in something like:
+
 <p align="center">
-  <img src="img/tickets_0.png">
+  <img src="img/tickets_0.svg">
 </p>
+
 Now, we could follow the principle and add the abstraction:
+
 <p align="center">
-  <img src="img/tickets_1.png">
+  <img src="img/tickets_1.svg">
 </p>
+
 
 I just divided the different layers in different packages, but the separation can be logical or even physical, in different projects.
 
@@ -61,23 +65,23 @@ _This is just sample code, in order to explain the problem, is not production co
 ```java
 package my.awesome.project.services
 
-public class TicketsService {
+public class TicketService {
 
-  private TicketsRepository TicketsRepository;
+  private final TicketRepository TicketRepository;
 
-  public TicketsService(TicketsRepository ticketsRepository) {
-    TicketsRepository = ticketsRepository;
+  public TicketService(TicketRepository ticketRepository) {
+    TicketRepository = ticketRepository;
   }
 
   public List<Ticket> findAll() {
-    return ticketsRepository.findAll();
+    return ticketRepository.findAll();
   }
 }
 ```
 ```java
 package my.awesome.project.repositories
 
-public interface TicketsRepository {
+public interface TicketRepository {
   List<Ticket> findAll();
 }
 ```
@@ -86,11 +90,11 @@ We can create the most simplest database in memory:
 ```java
 package my.awesome.project.repositories
 
-public class TicketsRepositoryImpl implements TicketsRepository{
+public class TicketRepositoryImpl implements TicketRepository{
   
-  public List<Ticket> list;
+  public final List<Ticket> list;
 
-  public TicketsRepositoryImpl(List<Ticket> list) {
+  public TicketRepositoryImpl(List<Ticket> list) {
     this.list = list;
   }
 
@@ -104,7 +108,7 @@ Just notice that the interface and the implementation are tied together in the s
  
 Easy right?
 
-Now you think you are applying the fifth solid pattern but the reallity is that you are doing totally the **opposite** thing. <span style="color:#EA735A;">You are violating the principle!!</span>
+Now you think you are applying the fifth solid pattern but the reallity is that you are doing totally the **opposite** thing. **You are violating the principle!!**
 
 So, read again the first phrase of the principle:
 
@@ -114,16 +118,16 @@ In our previous solution, high level module (business rules) is depending totall
 
 Let's rewind to the beginning, to the name of the principle, **dependency inversion**, so we could start again, but inverting the dependency: 
 <p align="center">
-  <img src="img/tickets_2.png">
+  <img src="img/tickets_2.svg">
 </p> 
 Easy to draw, now add more detail:
 <p align="center">
-  <img src="img/tickets_4.png">
+  <img src="img/tickets_3.svg">
 </p> 
 
 Change some naming, providing them with a meaningful names ( that topic could cover another entire post ):
 <p align="center">
-  <img src="img/tickets_3.png">
+  <img src="img/tickets_4.svg">
 </p> 
 
 And some sample code to how it could looks like:
@@ -135,7 +139,7 @@ package my.awesome.project.usecases
 
 public class GetTicketsUseCase {
 
-  private FindTickets findTickets;
+  private final FindTickets findTickets;
 
   public GetTicketsUseCase(FindTickets findTickets) {
     this. findTickets = findTickets;
@@ -158,9 +162,9 @@ public interface FindTickets {
 ```java
 package my.awesome.project.repositories
 
-public class InMemoryTicketsRepository implements FindTickets, AddTickets{
+public class InMemoryTicketsRepository implements FindTickets, AddTicket{
 
-  public List<Ticket> list;
+  public final List<Ticket> list;
 
   public TicketsRepositoryImpl(List<Ticket> list) {
     this.list = list;
@@ -211,6 +215,7 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 
 - Overcomplicating/overengineering: People tend to create complicated architectures on top of that, but the pattern is really simple and powerful.
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling has no sense.
+- Sense of code duplication: Objects models could be represented differently when used in use cases, the ones that come from database or the UI representation. 
 
 
 ## Creating a simple architecture
