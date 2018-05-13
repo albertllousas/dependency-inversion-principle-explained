@@ -1,8 +1,8 @@
 # Dependency inversion principle in practice
 
 1. [Introduction](##Introduction)
-2. [Explaining DIP](##Explaining DIP)
-3. [Applying DIP](##Applying DIP)
+2. [Explaining DIP](##Explaining%20DIP)
+3. [Creating a simple architecture](##Creating%20a%20simple%20architecture)
 
 ## Introduction
 
@@ -213,7 +213,7 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling has no sense.
 
 
-## Applying DIP
+## Creating a simple architecture
 
 Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest.
 
