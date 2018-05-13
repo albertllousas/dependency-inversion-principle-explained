@@ -1,10 +1,10 @@
 # Dependency inversion principle in practice
 
-1. [Introduction](##Introduction)
+1. [Introduction](##introduction)
 2. [What is dip?](##what-is-dip)
 3. [Creating a simple architecture](##creating-a-simple-architecture)
 
-## Introduction
+## introduction
 
 Have you ever heard about dependecy inversion principle?
 
@@ -18,7 +18,7 @@ Dependency inversion principle (from now on DIP) is the last principle and possi
 
 The goal of this project is to explain, apply and put in practice this pattern to show how to create and design a **simple architecture**.
 
-### What is dip
+### dip based architectures
 
 Some software architectural patterns are based on this pattern:
 
@@ -30,7 +30,7 @@ Also mention that software development process as Domain Driven Design also take
 
 The base of all of them is the same and simple, just invert the dependencies to mantain your domain code, the hearth of your application, clean and decoupled. 
 
-## Explaining DIP
+## what-is-dip
 
 The principle says:[^fn1]
 > _A. High-level modules should not depend on low-level modules. Both should depend on abstractions._
@@ -197,7 +197,7 @@ Yes!
 
 Yes, and it is called [Interface Segregation Principle](https://en.wikipedia.org/wiki/Interface_segregation_principle), another principle, the dependency inversion principle leads us to another one.[^fn2]
 
-### Benefits
+### benefits
 
 - Independent of any external influence: Your business rules, your domain simply won’t know anything at all about the outside world. It will be easy to swap any dependency and you can use dependencies as a tools.
 	- Independent of UI
@@ -209,7 +209,7 @@ Yes, and it is called [Interface Segregation Principle](https://en.wikipedia.org
 - Testable: Your core can be tested without the UI, Database or framework 
 
 
-### Drawbacks
+### drawbacks
 
 There are no many drawbacks on this pattern, the problem is how people apply it:
 
@@ -218,7 +218,7 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 - Sense of code duplication: Objects models could be represented differently when used in use cases, the ones that come from database or the UI representation. 
 
 
-## Creating a simple architecture
+## creating-a-simple-architecture
 
 Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest.
 
