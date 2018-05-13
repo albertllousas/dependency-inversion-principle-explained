@@ -1,8 +1,8 @@
 # Dependency inversion principle in practice
 
 1. [Introduction](##Introduction)
-2. [Explanation](##Explanation)
-3. [Creating a simple architecture](##Creating a simple architecture)
+2. [Explaining DIP](##Explaining DIP)
+3. [Applying DIP](##Applying DIP)
 
 ## Introduction
 
@@ -30,7 +30,7 @@ Also mention that software development process as Domain Driven Design also take
 
 The base of all of them is the same and simple, just invert the dependencies to mantain your domain code, the hearth of your application, clean and decoupled. 
 
-## Explanation
+## Explaining DIP
 
 The principle says:[^fn1]
 > _A. High-level modules should not depend on low-level modules. Both should depend on abstractions._
@@ -212,7 +212,8 @@ There are no many drawbacks on this pattern, the problem is how people apply it:
 - Overcomplicating/overengineering: People tend to create complicated architectures on top of that, but the pattern is really simple and powerful.
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling has no sense.
 
-## Creating a simple architecture
+
+## Applying DIP
 
 Now that we understand the pattern, let's use it to create a simple and clean architecture using DIP as a base to decouple all our application from the rest.
 
