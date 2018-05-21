@@ -169,7 +169,7 @@ public class InMemoryTicketsRepository implements TicketFinder, TicketAdder{
   public TicketsRepositoryImpl(List<Ticket> list) {
     this.list = list;
   }
-
+  
   @Override
   public List<Ticket> findAll() {
     return list;
