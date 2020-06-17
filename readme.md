@@ -1,12 +1,8 @@
-# Dependency inversion principle in practice
-
-1. [Introduction](#introduction)
-2. [What is dip?](#what-is-dip)
-3. [Creating a simple architecture](#creating-a-simple-architecture)
+# Dependency inversion principle explained
 
 ## introduction
 
-Have you ever heard about dependecy inversion principle?
+Have you ever heard about dependency inversion principle?
 
 For sure, you know or at least you have heard about [S.O.L.I.D](https://en.wikipedia.org/wiki/SOLID), an acronym for the five object-oriented design principles by Robert C. Martin, popularly known as Uncle Bob.
   
@@ -203,19 +199,18 @@ Yes, and it is called [Interface Segregation Principle](https://en.wikipedia.org
 
 ### benefits
 
-- Independent of any external influence: Your business rules, your domain simply won’t know anything at all about the outside world. It will be easy to swap any dependency and you can use dependencies as a tools.
-	- Independent of UI
-	- Independent of databases
-	- Independent of libraries
-	- Independent of frameworks 
-	
-- Loose coupling between layers
-- Testable: Your core can be tested without the UI, Database or framework 
-
+- The most important benefit of this pattern is that we can achieve loosely coupled architectures.
+- It enables the core of our software, the important stuff, to endure and survive the frequent changes in the more
+ volatile lower level modules, like databases, schemas or frameworks.
+- It protects us from a ripple effect from changes inside low level modules.
+- Independent of any external influence: Your business rules, your domain simply won’t know anything at all about the
+ outside world. It will be easy to swap any dependency withouth
+- Testability: Your core can be tested without the UI, Database or framework 
+ It is however not an easy principle to apply. It requires thought and discipline to apply it correctly and consistently. But the benefits far outweighs the effort required.
 
 ### drawbacks
 
-There are not many drawbacks on this pattern, the problem is how people apply it:
+There are not many drawbacks on this pattern:
 
 - Overcomplicating/overengineering: People tend to create complicated architectures on top of that but the pattern is really simple and powerful.
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling doesn't make sense.
@@ -226,9 +221,10 @@ There are not many drawbacks on this pattern, the problem is how people apply it
 
 Now that we understand the pattern, let's use it to create a simple and clean architecture.
 
-### Environment
-https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+TODO
 
 
-[^fn1]: [The Dependency Inversion Principle, Robert C. Martin, C++ Report, May 1996](https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf)
-[^fn2]: [A little architecture, Robert C. Martin, January 2016](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html)
+## Resources
+
+* [The Dependency Inversion Principle, Robert C. Martin, C++ Report, May 1996](https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf)
+* [A little architecture, Robert C. Martin, January 2016](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html)
