@@ -10,7 +10,7 @@ After some years in the IT sector I noticed that when we are speaking about desi
 
 > But, did you really know what 'D' of SOLID means? 
 
-Dependency inversion principle (from now on DIP) is the last principle and possibly one of the unknown or missunderstood ones, even though it is more than 20 years old.
+Dependency inversion principle (from now on DIP) is the last principle and possibly one of the unknown or misunderstood ones, even though it is more than 20 years old.
 
 The goal of this project is to explain, apply and put in practice this pattern to show how to create and design a **simple architecture**.
 
@@ -24,7 +24,8 @@ Some software architectural patterns are based on this pattern:
 
 Also mention that software development process as Domain Driven Design also take benefits and depend on dependency inversion. 
 
-The base of all of them is the same and simple, just invert the dependencies to mantain your domain code, the heart of your application, clean and decoupled. 
+The base of all of them is the same and simple, just invert the dependency direction in order to maintain your domain code, 
+the heart of your application, clean and decoupled. 
 
 ## what-is-dip
 
@@ -153,7 +154,7 @@ public interface TicketFinder {
   List<Ticket> findAll();
 }
 ```
-**Important**: If we took a look on the packages, you have should notice that now the interface belongs to the high level module, so the use case define how it wants to access the tickets.
+**Important**: If we took a look on the packages, you have should noticed that now the interface belongs to the high level module, so the use case defines how it wants to access the tickets.
 
 ```java
 package my.awesome.project.repositories
@@ -185,7 +186,7 @@ What do you think? Now, we are applying correctly the inversion, low level polic
 
 But wait wait wait ... Each use case class will only will use some of the facilities of the database. 
 
-> Then, each usecase/s will provide an interface that gives them access to just some functionalities?
+> Then, each use-case/s will provide an interface that gives them access to just some functionalities?
 
 Yes
 
@@ -199,12 +200,12 @@ Yes, and it is called [Interface Segregation Principle](https://en.wikipedia.org
 
 ### benefits
 
-- The most important benefit of this pattern is that we can achieve loosely coupled architectures.
+- The most important benefit of this pattern is that we can achieve loosely coupled architectures and domain isolation.
 - It enables the core of our software, the important stuff, to endure and survive the frequent changes in the more
  volatile lower level modules, like databases, schemas or frameworks.
 - It protects us from a ripple effect from changes inside low level modules.
 - Independent of any external influence: Your business rules, your domain simply won’t know anything at all about the
- outside world. It will be easy to swap any dependency withouth
+ outside world. It will be easy to swap any dependency.
 - Testability: Your core can be tested without the UI, Database or framework 
  It is however not an easy principle to apply. It requires thought and discipline to apply it correctly and consistently. But the benefits far outweighs the effort required.
 
@@ -215,14 +216,6 @@ There are not many drawbacks on this pattern:
 - Overcomplicating/overengineering: People tend to create complicated architectures on top of that but the pattern is really simple and powerful.
 - Misunderstanding: People misunderstand the pattern, and they just create abstractions for any component. Decoupling for the sake of decoupling doesn't make sense.
 - Sense of code duplication: Objects models could be represented differently when used in different layers,  the ones that come from the database or the UI representation could be different to the ones used in the app core, so in some cases we will have to parse from one domain to another and it will cause a sense of duplication. 
-
-
-## creating-a-simple-architecture
-
-Now that we understand the pattern, let's use it to create a simple and clean architecture.
-
-TODO
-
 
 ## Resources
 
